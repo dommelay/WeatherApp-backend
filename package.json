@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dommelay/project3-backEnd#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.3"

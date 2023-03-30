@@ -6,7 +6,8 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
-const Cities = require('./models/cities.js')
+const cors = require('cors')
+const City = require('./models/city.js')
 //___________________
 //Port
 //___________________
@@ -33,16 +34,22 @@ app.use(express.static('public'));
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
+app.use(cors());
 //___________________
 // Routes
 //___________________
 //localhost:3000
 app.get('/cities' , (req, res) => {
-  Cities.find({}).then((foundCities) => {
+  City.find({}).then((foundCities) => {
     res.json(foundCities)
   })
 });
 
+app.post('/cities', (req, res) => {
+    City.create(req.body).then((createdCity) => {
+        res.json(createdCity)
+    })
+})
 //___________________
 //Listener
 //___________________
