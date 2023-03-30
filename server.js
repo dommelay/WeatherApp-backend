@@ -6,6 +6,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
+const Cities = require('./models/cities.js')
 //___________________
 //Port
 //___________________
@@ -36,8 +37,10 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 // Routes
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
+app.get('/cities' , (req, res) => {
+  Cities.find({}).then((foundCities) => {
+    res.json(foundCities)
+  })
 });
 
 //___________________
