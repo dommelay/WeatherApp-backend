@@ -39,18 +39,23 @@ app.use(cors());
 // Routes
 //___________________
 //localhost:3000
+app.post('/cities', (req, res) => {
+    City.create(req.body).then((createdCity) => {
+        res.json(createdCity)
+    })
+})
 app.get('/cities' , (req, res) => {
   City.find({}).then((foundCities) => {
     res.json(foundCities)
   })
 });
 
-app.post('/cities', (req, res) => {
-    City.create(req.body).then((createdCity) => {
-        res.json(createdCity)
-    })
-})
+
+
 //___________________
 //Listener
 //___________________
 app.listen(PORT, () => console.log( 'Listening on port:', PORT));
+mongoose.connection.once('open', ()=>{
+    console.log('connected to mongod...');
+});
