@@ -48,7 +48,12 @@ app.get('/cities' , (req, res) => {
   City.find({}).then((foundCities) => {
     res.json(foundCities)
   })
-});
+})
+app.delete('/cities/:id', (req, res) => {
+    City.findByIdAndRemove(req.params.id).then((deletedCity) => {
+        res.json(deletedCity)
+    })
+})
 
 
 
