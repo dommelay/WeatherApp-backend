@@ -13,7 +13,8 @@ const citySchema = new mongoose.Schema({
    weatherDescription: String,
    weatherIcon: String,
    cloud: Number,
-   country: String
+   country: String,
+   url: String
 })
 
 const City = mongoose.model('City', citySchema)
