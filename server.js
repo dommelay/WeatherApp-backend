@@ -55,7 +55,7 @@ app.delete('/cities/:id', (req, res) => {
     })
 })
 app.put('/cities/:id', (req, res) => {
-    City.findByIdAndUpdate(req.params.id).then((updatedCity) => {
+    City.findByIdAndUpdate(req.params.id, req.body).then((updatedCity) => {
         res.json(updatedCity)
     })
 })
