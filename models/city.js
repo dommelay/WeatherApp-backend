@@ -14,7 +14,8 @@ const citySchema = new mongoose.Schema({
    weatherIcon: String,
    cloud: Number,
    country: String,
-   url: String
+   url: String,
+   backgroundImageUrl: String
 })
 
 const City = mongoose.model('City', citySchema)
